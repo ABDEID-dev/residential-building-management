@@ -1,0 +1,10 @@
+/config.php
+/.env
+/.env.*
+!/.env.example
+/uploads/*
+!/uploads/.gitkeep
+*.log
+*.zip
+/.idea/
+/.vscode/

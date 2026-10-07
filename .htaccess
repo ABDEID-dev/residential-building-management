@@ -1,0 +1,20 @@
+Options -Indexes
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index(?:\.(?:html|php))?[\s?] [NC]
+RewriteRule ^(.*/)?index(?:\.(?:html|php))?$ /%1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.(?:html|php)[\s?] [NC]
+RewriteRule ^(.+?)\.(?:html|php)$ /$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]
+
+<FilesMatch "^(config\.php|config\.example\.php|database\.sql)$">
+  Require all denied
+</FilesMatch>
